@@ -47,15 +47,19 @@ def graph(simg):
     peaks=find_peaks(spectrum,height=10,threshold=5,distance=5)
     print(wavelengths[peaks[0]])
 
-
+    
     plt.style.use('Solarize_Light2')
-    plt.figure(figsize=(10, 5))
+    fig=plt.figure(figsize=(10, 5))
     plt.plot(wavelengths, spectrum, color='b', linewidth=2)
     plt.xlabel('Wavelength (nm)')
     plt.ylabel('Intensity')
     plt.title('Wavelength Spectrum')
     plt.grid(True)
     plt.show()
+    #plt.draw()
+    #plt.waitforbuttonpress(0)
+    #input()
+    #plt.close(fig)
 
     check(elements,wavelengths[peaks[0]],10)
 
@@ -88,6 +92,8 @@ def graph(simg):
     wspace=0.2)
     #plt.subplot_tool()
     #print(plt.style.available)
+    mng = plt.get_current_fig_manager()
+    mng.full_screen_toggle()
     plt.show()
 
-#graph('sample1.png')
+graph('sample1.png')
